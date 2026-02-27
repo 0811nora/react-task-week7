@@ -1,0 +1,42 @@
+.cartPage{
+    th{
+        background-color: $dark;
+        color: $white;
+        padding: 15px;
+        border-bottom: 8px solid $primary;
+        transition:  0.3s;
+
+    }
+    td{
+        background-color: $white;
+        color: $dark;
+        padding: 15px;
+        border-bottom: 8px solid $primary;
+        transition:  0.16s ease;
+
+        
+
+    }
+    .table-hover tbody tr{
+        &:hover > * {
+            background-color: $dark;
+            color: $white;
+        }
+    }
+
+    .countBtn{
+        button{
+            border-radius: 3px;
+            padding: 1px 3px;
+            background-color: $dark;
+            background-color: $primary;
+            &:hover{
+                background-color: $dark;
+
+            }
+        }
+    }
+    
+
+
+}

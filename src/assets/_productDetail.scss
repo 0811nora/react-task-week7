@@ -1,0 +1,35 @@
+.productDetail{
+    img{
+        aspect-ratio: 1/1;
+    }
+
+    .drakBtn{
+        background-color: $dark;
+        color: #ffffff;
+        border-radius: 0;
+        &:hover{
+            
+            margin-left: -10px;
+        }
+    }
+    .countBtn{
+        button{
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border: 0;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+    }
+    .addCartBtn{
+        border:5px solid transparent;
+
+        &:hover{
+            border:5px solid #d4f1f5;
+            box-shadow: 0 0 20px 5px rgba(60, 151, 179, 0.925);
+        }
+    }
+
+    
+}
