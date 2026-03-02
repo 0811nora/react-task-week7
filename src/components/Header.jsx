@@ -32,7 +32,7 @@ function Header() {
                     </li>
                     <li className="nav-item  text-center">
                         <NavLink className="nav-link  nav-btn text-dark  fw-bolder w-100 px-2" to={token ? '/admin' : '/login'}  >
-                            {token ? "你是管理者" : "登入"}
+                            {token ? "你是管理者" : "後台登入"}
                         </NavLink>
                     </li>
                 </ul>
