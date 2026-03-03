@@ -1,4 +1,4 @@
-import ProductCard from "../components/ProdeuctCard";
+import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
 import { getAllProducts, } from "../api/Api";
 import Loader from "../components/Loader";
@@ -25,7 +25,7 @@ function Product(){
                 setAllProduct(res.data.products);
                 setCategoryProduct(res.data.products);
                 setIsLoading(false)
-                
+                console.log(res)
                 
             }catch(err){
                 console.log(err)
@@ -59,7 +59,7 @@ function Product(){
                     
 
                     <div className="text-center mb-5">
-                        {categoryList.map((item) => (
+                        {categoryList?.map((item) => (
                             <button key={item} 
                                 className={`btn  bottom-b-dark m-2 rounded-0 ${item === targetCategory ? "btn-dark " : " "}`} 
                                 onClick={() => headleCategory(item)}>{item}

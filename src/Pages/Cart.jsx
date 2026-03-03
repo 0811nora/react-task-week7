@@ -158,8 +158,8 @@ function CartPage(){
 
                                                                 
                                                             </td>
-                                                            <td className="text-center">$ {item.product.price}</td>
-                                                            <td className="text-center">$ {item.total}</td>
+                                                            <td className="text-center">$ {item.product.price.toLocaleString()}</td>
+                                                            <td className="text-center">$ {item.total.toLocaleString()}</td>
                                                             
                                                         </tr>
                                                     ))}
@@ -179,7 +179,7 @@ function CartPage(){
                                                 </div>
                                                 <div className="d-flex justify-content-between py-3">
                                                     <p>總計金額</p>
-                                                    <p className="fw-bold">$ {totalPrice}</p>
+                                                    <p className="fw-bold">$ {totalPrice.toLocaleString()}</p>
                                                 </div>
                                                 <button className="btn btn-dark w-100 mt-3 text-primary" onClick={emptyCart}>前往結帳</button>
                                                 
