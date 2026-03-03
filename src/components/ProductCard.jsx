@@ -1,7 +1,7 @@
 import { Link} from "react-router-dom";
 import { postAddToCart } from "../api/Api";
 import { errorNotify, successNotify } from "./Toast";
-import PageTransition from "../components/PageTransition";
+import PageTransition from "./PageTransition";
 
 
 
@@ -34,7 +34,7 @@ function ProductCard({data}) {
         <PageTransition>
             <div className="productCard mx-auto" style={{maxWidth:"960px"}}>
                 <div className="row row-cols-2">
-                    {data.map((item) => (
+                    {data?.map((item) => (
                         <div className="col-6 col-md-4 col-lg-3" key={item.id}>
                             
                             <div className="card position-relative mb-5 text-white" >
@@ -45,12 +45,12 @@ function ProductCard({data}) {
                                 <div className="card-body position-absolute bottom-0 start-0 w-100">
                                     <h5 className="mb-2  me-2">{item.title}</h5>
                                     <span className="mb-2">
-                                        {item.tags.map((i) => (
+                                        {item.tags?.map((i) => (
                                             <span key={i} className="badge bg-dark fw-normal me-1">{i}</span>
                                         ))}
                                     </span>
                                     <div className="d-flex justify-content-between">
-                                        <p className="card-text fs-4 fw-bolder">${item.price}</p>
+                                        <p className="card-text fs-4 fw-bolder">${item.price.toLocaleString()}</p>
                                         <div >
                                             <button className="btn btn-dark px-4" onClick={() => postAddCart(item.id)} >
                                                 <i className="bi bi-cart-plus-fill"></i>

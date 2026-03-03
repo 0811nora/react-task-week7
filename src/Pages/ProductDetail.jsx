@@ -3,7 +3,7 @@ import { errorNotify, successNotify } from "../components/Toast";
 import { useState, useEffect} from "react";
 import { getAllProducts , postAddToCart } from "../api/Api";
 import PageTransition from "../components/PageTransition";
-import ProductCard from "../components/ProdeuctCard";
+import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
 
 
@@ -95,9 +95,11 @@ function ProductDetail() {
                                     <div className="text-white ">
                                         <h2 className="mb-3 fs-1">{targetData?.title}</h2>
                                         <div className="mb-3">
-                                            {targetData?.tags.map( (i) =>(
-                                                <span className="badge bg-primary me-2 text-dark">{i}</span>
-                                            ) )}
+                                            {Array.isArray(targetData?.tags) && targetData.tags.map((i) => (
+                                                <span key={i} className="badge bg-primary me-2 text-dark">
+                                                    {i}
+                                                </span>
+                                            ))}
                                         </div>
                                         <p className="fs-1 mb-2 fw-bolder">$ {targetData?.price}</p>
                                         <p>{targetData?.content}</p>
