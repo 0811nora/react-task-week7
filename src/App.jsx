@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import axios from "axios";
 import MessageToast from "./components/MessageToast";
+import ScrollToTop from "./components/ScrollToTop";
 
 const token = document.cookie
 	.split("; ")
@@ -14,6 +15,7 @@ function App() {
 	return (
 		<>
 			<div>
+				<ScrollToTop />
 				<MessageToast />
 				<Header />
 				<div>

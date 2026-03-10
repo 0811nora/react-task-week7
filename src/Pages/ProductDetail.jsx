@@ -71,7 +71,6 @@ function ProductDetail() {
     if( id !== prevId ){
         setPrevId(id);
         setNum(1);
-        window.scrollTo(0, 0);
     }
 
 
