@@ -1,36 +1,32 @@
-import {  useNavigate,  useParams } from "react-router-dom";
-import { errorNotify, successNotify } from "../components/Toast";
+import { useNavigate,  useParams } from "react-router-dom";
 import { useState, useEffect} from "react";
 import { getAllProducts , postAddToCart } from "../api/Api";
+import { useDispatch } from "react-redux";
+import { getCartAsync } from "../slice/cartSlice";
 import PageTransition from "../components/PageTransition";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
-
-
-
-
-
+import useMessage from "../hook/useMessage";
 
 function ProductDetail() {
 
     const { id } = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
 
     const [ allProduct , setAllProduct ] = useState([]);
     const [ num , setNum ] = useState(1);
     const [ recommendData , setRecommendData ] = useState([]);
     const [ isLoading , setIsLoading ] = useState(false);
-
-
-
-
+    const [ prevId , setPrevId ] = useState(id);
+    const { showSuccess , showError } = useMessage();
 
     const  randomProducts = (products) => {
         return [...products]
             .sort(() => Math.random() - 0.5)
             .slice(0, 8);
     }
-
 
     useEffect(() => {
         const getProductData = async () => {
@@ -48,12 +44,7 @@ function ProductDetail() {
         getProductData();
     },[])
 
-
-
-    useEffect(() => {
-        setNum(1);
-    },[id])
-
+    
     const targetData = allProduct.find((item) =>item.id === id);
 
     if(isLoading){
@@ -69,13 +60,19 @@ function ProductDetail() {
         }
         try{
             const res = await postAddToCart(data);
-            successNotify(res.data.message)
+            dispatch(getCartAsync())
+            showSuccess(res.data.message);
 
         }catch(err){
-            errorNotify(err.response.data.message[0])
+            showError(err.response.data.message[0])
         }
     }
 
+    if( id !== prevId ){
+        setPrevId(id);
+        setNum(1);
+        window.scrollTo(0, 0);
+    }
 
 
 

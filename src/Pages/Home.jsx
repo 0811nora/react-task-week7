@@ -1,19 +1,9 @@
 import bannerImg from '../assets/img/banner-3.png';
 import MenuBtn from '../components/MenuBtn';
 import PageTransition from "../components/PageTransition";
-import { userCheck } from '../api/Api';
-import { useEffect } from 'react';
-
-
 
 function Home(){
 
-    useEffect(() => {
-        const checkUserState = async () =>{
-            await userCheck();
-        }
-        checkUserState();
-    })
 
     return (<>
         <PageTransition>
@@ -33,7 +23,6 @@ function Home(){
                                 <img src={bannerImg} alt="" className='w-100 h-100'/>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
 

@@ -4,7 +4,6 @@ import { getAllProducts, } from "../api/Api";
 import Loader from "../components/Loader";
 
 
-
 function Product(){
 
     const [ allProduct , setAllProduct ] = useState([]);
@@ -13,9 +12,6 @@ function Product(){
     const [ isLoading , setIsLoading ] = useState(false);
 
     const categoryList = ["全部","清新果漾","職人花香","法式醇厚","經典茶韻","暖心堅果","東方旬味"];
-
-    
-
     
     useEffect(() => {
         const getProductData = async () => {
@@ -55,9 +51,6 @@ function Product(){
         <div className="bg-primary d-flex flex-column" style={{ minHeight: '90vh' }}>
             <div className="bg-primary py-5">
                 <div className="container ">
-
-                    
-
                     <div className="text-center mb-5">
                         {categoryList?.map((item) => (
                             <button key={item} 
@@ -66,11 +59,8 @@ function Product(){
                             </button>
                         ))}
                     </div>
-                    
                     <ProductCard data={categoryProduct}/>
-
                 </div>
-
             </div>
         </div>
         

@@ -1,12 +1,9 @@
 import { useForm } from "react-hook-form";
 import { postSignin } from "../api/Api";
-import { successNotify } from "../components/Toast";
-import { errorNotify } from "../components/Toast";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from 'axios';
-
-
+import useMessage from "../hook/useMessage";
 
 
 // macaron@demo.com
@@ -16,8 +13,8 @@ const Login = () => {
 
     const navigate = useNavigate();
     const [ loginData , setLoginData ] = useState(null);
+    const { showSuccess , showError } = useMessage();
 
-    
     const { 
         register,
         handleSubmit,
@@ -37,14 +34,12 @@ const Login = () => {
             document.cookie = `admToken=${token};expires=${new Date(expired)};path=/;`;
         }
     },[loginData])
-    
-
 
     const onSubmit = async(data) => {
         try{
-            const res = await postSignin(data);;
-            successNotify(res.data.message);
+            const res = await postSignin(data);
             setLoginData(res.data)
+            showSuccess(res.data.message);
             reset();
 
             setTimeout(()=>{
@@ -53,13 +48,9 @@ const Login = () => {
 
 
         }catch(err){
-            errorNotify(err.response.data.message);
+            showError(err.response.data.message);
         }
-
     }
-
-
-    
 
 
     return(<>
@@ -88,8 +79,6 @@ const Login = () => {
                     {...register('password',{required: true,})}
                 />
                 <span className="text-danger">{errors.password ? "請填寫密碼" : ''}</span>
-
-
                 <button className="login-button-confirm" type="submit" >登入</button>
             </div>
         </form>
